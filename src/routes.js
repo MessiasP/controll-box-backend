@@ -24,10 +24,21 @@ routes.get(`${rootUrl}/user/:id`, handle(controllers.UserController.getUser))
 routes.delete(`${rootUrl}/user/:id`, handle(controllers.UserController.deleteUser))
 
 /**
- * PessoaEntity
+ * ProdutoEntity
  */
-routes.post(`${rootUrl}/pessoa`, validate(validators.PessoaValidator), handle(controllers.PessoaController.createPessoa))
-routes.get(`${rootUrl}/pessoa`, handle(controllers.PessoaController.getAllPessoa))
-routes.get(`${rootUrl}/pessoa/:id`, handle(controllers.PessoaController.getPessoa))
+routes.post(`${rootUrl}/produto`, validate(validators.ProdutoValidator), handle(controllers.ProdutoController.createProduto))
+routes.get(`${rootUrl}/produto`, handle(controllers.ProdutoController.getAllProduto))
+routes.get(`${rootUrl}/produto/:id`, handle(controllers.ProdutoController.getProduto))
+routes.put(`${rootUrl}/produto/:id`, validate(validators.ProdutoValidator), handle(controllers.ProdutoController.updateProduto))
+routes.delete(`${rootUrl}/produto/:id`, handle(controllers.ProdutoController.deleteProduto))
+
+/**
+ * LojaEntity
+ */
+routes.post(`${rootUrl}/loja`, validate(validators.LojaValidator), handle(controllers.LojaController.createLoja))
+routes.get(`${rootUrl}/loja`, handle(controllers.LojaController.getAllLoja))
+routes.get(`${rootUrl}/loja/:id`, handle(controllers.LojaController.getLoja))
+routes.put(`${rootUrl}/loja/:id`, validate(validators.LojaValidator), handle(controllers.LojaController.updateLoja))
+routes.delete(`${rootUrl}/loja/:id`, handle(controllers.LojaController.deleteLoja))
 
 module.exports = routes
