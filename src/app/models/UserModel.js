@@ -14,8 +14,7 @@ const UserSchema = new mongoose.Schema({
     required: true
   },
   sobrenome: {
-    type: String,
-    required: false
+    type: String
   },
   cpf: {
     type: Number,

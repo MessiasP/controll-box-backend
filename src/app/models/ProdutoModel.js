@@ -27,8 +27,7 @@ const ProdutoSchema = new mongoose.Schema({
     required: true
   },
   descricao: {
-    type: String,
-    required: false
+    type: String
   },
   idLoja: {
     type: mongoose.Schema.Types.ObjectId,
