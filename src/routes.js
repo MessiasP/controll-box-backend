@@ -13,6 +13,8 @@ const rootUrl = '/api'
 routes.post(`${rootUrl}/user`, validate(validators.UserValidator), handle(controllers.UserController.createUser))
 routes.post(`${rootUrl}/login`, validate(validators.UserValidator), handle(controllers.SessionController.generateToken))
 
+// routes.use(authMiddleware)
+
 /**
  *  USER'S ROUTES
  */
