@@ -24,6 +24,7 @@ class UserController {
       sort: '-createdAt'
     })
     res.json({ userRes })
+    // res.setHeader('Access-Control-Allow-Origin', 'Authorization');
   }
 
   async getUser (req, res) {

@@ -10,6 +10,11 @@ const authMiddleware = require('./app/middlewares/auth')
 
 const rootUrl = '/api'
 
+routes.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    next()
+})
+
 routes.post(`${rootUrl}/user`, validate(validators.UserValidator), handle(controllers.UserController.createUser))
 routes.post(`${rootUrl}/login`, validate(validators.UserValidator), handle(controllers.SessionController.generateToken))
 
