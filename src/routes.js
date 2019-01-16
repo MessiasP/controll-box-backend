@@ -3,6 +3,7 @@ const handle = require('express-async-handler')
 const validate = require('express-validation')
 const routes = express.Router()
 
+const cors = require('cors')
 const controllers = require('./app/controllers')
 const validators = require('./app/validators')
 
@@ -10,21 +11,16 @@ const authMiddleware = require('./app/middlewares/auth')
 
 const rootUrl = '/api'
 
-routes.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    next()
-})
-
 routes.post(`${rootUrl}/user`, validate(validators.UserValidator), handle(controllers.UserController.createUser))
 routes.post(`${rootUrl}/login`, validate(validators.UserValidator), handle(controllers.SessionController.generateToken))
 
-// routes.use(authMiddleware)
+routes.use(authMiddleware)
 
 /**
  *  USER'S ROUTES
  */
 routes.put(`${rootUrl}/user/:id`, validate(validators.UserValidator), handle(controllers.UserController.updateUser))
-routes.get(`${rootUrl}/users`, handle(controllers.UserController.getAllUser))
+routes.get(`${rootUrl}/user`, handle(controllers.UserController.getAllUser))
 routes.get(`${rootUrl}/user/:id`, handle(controllers.UserController.getUser))
 routes.delete(`${rootUrl}/user/:id`, handle(controllers.UserController.deleteUser))
 

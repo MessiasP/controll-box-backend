@@ -4,6 +4,7 @@ const express = require('express')
 const validate = require('express-validation')
 const mongoose = require('mongoose')
 const Youch = require('youch')
+const cors = require('cors')
 
 const databaseConfig = require('./config/databaseConfig')
 
@@ -12,6 +13,7 @@ class App {
     this.express = express()
 
     this.database()
+    this.setCors()
     this.middleware()
     this.routes()
     this.exception()
@@ -25,6 +27,9 @@ class App {
     mongoose.set('debug', true)
   }
 
+  setCors() {
+    this.express.use(cors());
+  }
   middleware () {
     this.express.use(express.json())
   }
