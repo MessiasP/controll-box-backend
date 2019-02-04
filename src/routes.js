@@ -3,6 +3,7 @@ const handle = require('express-async-handler')
 const validate = require('express-validation')
 const routes = express.Router()
 
+const cors = require('cors')
 const controllers = require('./app/controllers')
 const validators = require('./app/validators')
 
@@ -40,7 +41,7 @@ routes.post(`${rootUrl}/login`, validate(validators.UserValidator), handle(contr
  *  USER'S ROUTES
  */
 routes.put(`${rootUrl}/user/:id`, validate(validators.UserValidator), handle(controllers.UserController.updateUser))
-routes.get(`${rootUrl}/users`, handle(controllers.UserController.getAllUser))
+routes.get(`${rootUrl}/user`, handle(controllers.UserController.getAllUser))
 routes.get(`${rootUrl}/user/:id`, handle(controllers.UserController.getUser))
 routes.delete(`${rootUrl}/user/:id`, handle(controllers.UserController.deleteUser))
 
