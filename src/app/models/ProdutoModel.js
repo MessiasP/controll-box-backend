@@ -32,7 +32,7 @@ const ProdutoSchema = new mongoose.Schema({
   idLoja: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Loja',
-    required: true
+    // required: true
   },
   createdAt: {
     type: Date,
