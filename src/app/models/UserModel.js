@@ -7,7 +7,9 @@ const paginate = require('mongoose-paginate')
 const UserSchema = new mongoose.Schema({
   login: {
     type: String,
-    required: true
+    required: true,
+    lowercase: true,
+    trim: true
   },
   nome: {
     type: String,

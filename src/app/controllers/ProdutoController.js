@@ -14,7 +14,7 @@ class ProdutoController {
   async getAllProduto (req, res) {
     const produtoRes = await ProdutoModel.paginate({}, {
       page: req.query.page || 1,
-      limit: 20,
+      limit: req.query.limit || 25,
       sort: '-createdAt'
     })
     res.json({ produtoRes })
